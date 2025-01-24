@@ -1,0 +1,23 @@
+[gd_resource type="VisualShader" load_steps=3 format=3 uid="uid://1ben3oi7qf4o"]
+
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_r0c3h"]
+function = 1
+
+[sub_resource type="VisualShaderNodeColorFunc" id="VisualShaderNodeColorFunc_edel7"]
+function = 1
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+graph_offset = Vector2(-277.724, 63.0958)
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(400, 160)
+nodes/fragment/2/node = SubResource("VisualShaderNodeColorFunc_r0c3h")
+nodes/fragment/2/position = Vector2(-200, 240)
+nodes/fragment/3/node = SubResource("VisualShaderNodeColorFunc_edel7")
+nodes/fragment/3/position = Vector2(-80, 400)
