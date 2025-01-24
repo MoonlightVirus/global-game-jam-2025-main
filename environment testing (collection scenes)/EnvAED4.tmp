@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dhrwi8t7ulkvx"]
+[gd_scene load_steps=11 format=3 uid="uid://dhrwi8t7ulkvx"]
 
+[ext_resource type="PackedScene" uid="uid://xi2msghc2j50" path="res://environment testing (collection scenes)/player_(swimmer).tscn" id="1_01eed"]
+[ext_resource type="Shader" path="res://environment testing (collection scenes)/Ocean Shader (Deep Sea Test).gdshader" id="1_rkshb"]
 [ext_resource type="Shader" uid="uid://l0npcntevqp1" path="res://environment testing (collection scenes)/Ocean Shader 2.tres" id="2_xoajg"]
-[ext_resource type="PackedScene" uid="uid://kxxmipm16w0q" path="res://character_body_3d test.tscn" id="2_ywqc1"]
 
 [sub_resource type="Environment" id="Environment_s4332"]
 ambient_light_source = 3
@@ -16,14 +17,22 @@ volumetric_fog_emission_energy = 0.0
 volumetric_fog_anisotropy = 0.38
 volumetric_fog_length = 1024.0
 
+[sub_resource type="QuadMesh" id="QuadMesh_no7dk"]
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb6t3"]
+render_priority = 0
+shader = ExtResource("1_rkshb")
+shader_parameter/edge_threshold = 0.5
+shader_parameter/line_color = Color(0.043, 0.282, 0.467, 1)
+shader_parameter/background_color = Color(0.408, 0.969, 0.694, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kssuy"]
 render_priority = 0
 shader = ExtResource("2_xoajg")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w6fmr"]
 material = SubResource("ShaderMaterial_kssuy")
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_lyr80"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hana2"]
 
@@ -50,19 +59,21 @@ environment = SubResource("Environment_s4332")
 
 [node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
+[node name="Player (Swimmer)" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("1_01eed")]
+transform = Transform3D(1, 0, 0, 0, 1, 1.06581e-14, 0, -1.06581e-14, 1, 0, 2.742, 0)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D/Player (Swimmer)"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.78347, 2.96666e-14)
+fov = 110.0
+
+[node name="Shader" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/Player (Swimmer)/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0016005, 0, 0)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_no7dk")
+surface_material_override/0 = SubResource("ShaderMaterial_hb6t3")
+
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D"]
 mesh = SubResource("PlaneMesh_w6fmr")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="SubViewportContainer/SubViewport/Node3D/MeshInstance3D"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/MeshInstance3D/StaticBody3D"]
-shape = SubResource("BoxShape3D_lyr80")
-
-[node name="CharacterBody3D" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("2_ywqc1")]
-
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D/CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.52547, 9.82558e-20)
-fov = 110.0
 
 [node name="Node3D2" type="Node3D" parent="SubViewportContainer/SubViewport"]
 
@@ -70,6 +81,3 @@ fov = 110.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12996, 0, 0)
 mesh = SubResource("BoxMesh_hana2")
 surface_material_override/0 = SubResource("StandardMaterial3D_d52sr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D2/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12996, 0, 0)
