@@ -1,79 +1,22 @@
-[gd_scene load_steps=10 format=3 uid="uid://dhrwi8t7ulkvx"]
-
-[ext_resource type="Shader" path="res://environment testing (collection scenes)/Ocean Shader (Deep Sea Test).gdshader" id="1_rkshb"]
-[ext_resource type="Shader" uid="uid://l0npcntevqp1" path="res://environment testing (collection scenes)/Ocean Shader 2.tres" id="2_xoajg"]
-
-[sub_resource type="Environment" id="Environment_s4332"]
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
-fog_enabled = true
-fog_light_color = Color(0.318001, 0.344169, 0.370402, 1)
-fog_light_energy = 0.0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.5789
-volumetric_fog_albedo = Color(0.2898, 0.510389, 0.581657, 1)
-volumetric_fog_emission_energy = 0.0
-volumetric_fog_anisotropy = -0.38
-volumetric_fog_length = 1024.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_no7dk"]
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_hb6t3"]
-render_priority = 0
-shader = ExtResource("1_rkshb")
-shader_parameter/edge_threshold = 0.5
-shader_parameter/line_color = Color(0.043, 0.282, 0.467, 1)
-shader_parameter/background_color = Color(0.408, 0.969, 0.694, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kssuy"]
-render_priority = 0
-shader = ExtResource("2_xoajg")
+[gd_scene load_steps=3 format=3 uid="uid://dhrwi8t7ulkvx"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w6fmr"]
-material = SubResource("ShaderMaterial_kssuy")
 
 [sub_resource type="BoxMesh" id="BoxMesh_hana2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d52sr"]
-
 [node name="EnvironmentTest" type="Node3D"]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-texture_filter = 5
-offset_right = 747.0
-offset_bottom = 431.0
-stretch = true
+[node name="Node3D" type="Node3D" parent="."]
 
-[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
-handle_input_locally = false
-size = Vector2i(747, 431)
-render_target_update_mode = 4
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport"]
-environment = SubResource("Environment_s4332")
-
-[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
-
-[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.742, 0)
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.84682, 0)
 fov = 110.0
 
-[node name="Shader" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0016005, 0, 0)
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_no7dk")
-surface_material_override/0 = SubResource("ShaderMaterial_hb6t3")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 mesh = SubResource("PlaneMesh_w6fmr")
 
-[node name="Node3D2" type="Node3D" parent="SubViewportContainer/SubViewport"]
+[node name="Node3D2" type="Node3D" parent="."]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12996, 0, 0)
 mesh = SubResource("BoxMesh_hana2")
-surface_material_override/0 = SubResource("StandardMaterial3D_d52sr")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.64679, 0.762668, 0, -0.762668, 0.64679, 0, 2.15175, 0)
