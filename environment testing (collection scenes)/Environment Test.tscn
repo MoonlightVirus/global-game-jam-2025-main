@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene load_steps=9 format=3 uid="uid://dhrwi8t7ulkvx"]
 
 [ext_resource type="Shader" uid="uid://l0npcntevqp1" path="res://environment testing (collection scenes)/Ocean Shader 2.tres" id="2_xoajg"]
@@ -19,24 +20,21 @@ volumetric_fog_length = 1024.0
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kssuy"]
 render_priority = 0
 shader = ExtResource("2_xoajg")
+=======
+[gd_scene load_steps=3 format=3 uid="uid://dhrwi8t7ulkvx"]
+>>>>>>> 791b7e6daacc5bbd7aa237a6baec721547890a4b
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w6fmr"]
-material = SubResource("ShaderMaterial_kssuy")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lyr80"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hana2"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d52sr"]
-
 [node name="EnvironmentTest" type="Node3D"]
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
-texture_filter = 5
-offset_right = 747.0
-offset_bottom = 431.0
-stretch = true
+[node name="Node3D" type="Node3D" parent="."]
 
+<<<<<<< HEAD
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false
 size = Vector2i(747, 431)
@@ -65,11 +63,24 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5.5
 fov = 110.0
 
 [node name="Node3D2" type="Node3D" parent="SubViewportContainer/SubViewport"]
+=======
+[node name="Camera3D" type="Camera3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.84682, 0)
+fov = 110.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+mesh = SubResource("PlaneMesh_w6fmr")
+
+[node name="Node3D2" type="Node3D" parent="."]
+>>>>>>> 791b7e6daacc5bbd7aa237a6baec721547890a4b
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.12996, 0, 0)
 mesh = SubResource("BoxMesh_hana2")
+<<<<<<< HEAD
 surface_material_override/0 = SubResource("StandardMaterial3D_d52sr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D2/MeshInstance3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.12996, 0, 0)
+=======
+>>>>>>> 791b7e6daacc5bbd7aa237a6baec721547890a4b
