@@ -61,6 +61,7 @@ mesh = SubResource("BoxMesh_xek8l")
 
 [node name="CharacterBody3D2" parent="." instance=ExtResource("3_3y6w3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+spawn_offset = Vector3(0, 1, 2)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 5, 0)
