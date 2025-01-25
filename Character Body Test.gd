@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
-const SPEED = 5.0  # Movement speed
-const ROTATION_SPEED = 1.0  # How fast the player rotates (radians per second)
+const SPEED = 8.0  # Movement speed
+const ROTATION_SPEED = 3.0  # How fast the player rotates (radians per second)
 const ACCELERATION = 2.0  # Acceleration speed
 const DECELERATION = 3.0  # Deceleration speed
 var target_rotation_y = 0.0

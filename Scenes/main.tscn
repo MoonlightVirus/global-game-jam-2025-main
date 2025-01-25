@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://q1oclqcr7jps"]
+[gd_scene load_steps=6 format=3 uid="uid://q1oclqcr7jps"]
 
 [ext_resource type="PackedScene" uid="uid://dsg0emsoncbh7" path="res://character_body_3d test.tscn" id="1_q8av5"]
 [ext_resource type="Environment" uid="uid://dquai7pghtbvx" path="res://Shaders/new_environment.tres" id="2_8mfix"]
+[ext_resource type="Script" path="res://Scenes/main_camera.gd" id="3_dd81g"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84ci4"]
 
@@ -16,6 +17,14 @@ light_energy = 0.808
 light_volumetric_fog_energy = 0.515
 shadow_enabled = true
 
+[node name="SpotLight3D" type="SpotLight3D" parent="DirectionalLight3D"]
+transform = Transform3D(1, 0, -2.98023e-08, -2.98023e-08, 1, -4.47035e-08, -1.49012e-08, 1.49012e-08, 1, -4.55287, -0.265185, 10.9472)
+light_color = Color(1, 1, 0.756863, 1)
+light_energy = 10.965
+light_indirect_energy = 1.97
+light_volumetric_fog_energy = 8.919
+spot_range = 20.8447
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_8mfix")
 
@@ -26,7 +35,6 @@ transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
 shape = SubResource("BoxShape3D_84ci4")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = SubResource("BoxMesh_2dpm2")
 
 [node name="Floor2" type="StaticBody3D" parent="."]
@@ -66,3 +74,5 @@ spring_length = 3.0
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 5, 0)
+near = 4.015
+script = ExtResource("3_dd81g")

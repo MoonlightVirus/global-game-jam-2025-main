@@ -1,0 +1,102 @@
+[gd_scene load_steps=7 format=3 uid="uid://bepn4lxqgu2sm"]
+
+[ext_resource type="PackedScene" uid="uid://cp45amiinkoln" path="res://Scenes/character_body_3d test.tscn" id="1_1mqqk"]
+[ext_resource type="Environment" uid="uid://dquai7pghtbvx" path="res://Shaders/new_environment.tres" id="2_0squq"]
+[ext_resource type="PackedScene" uid="uid://dsg0emsoncbh7" path="res://character_body_3d test.tscn" id="3_3y6w3"]
+[ext_resource type="Script" path="res://Scenes/main_camera.gd" id="4_hhe41"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_217ym"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xek8l"]
+lightmap_size_hint = Vector2i(14, 21)
+
+[node name="EnvironmentWorldBuilding" type="Node3D"]
+
+[node name="CharacterBody3D" parent="." instance=ExtResource("1_1mqqk")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.62388, 0.676816, -0.39076, 4.18842e-08, 0.5, 0.866025, 0.78152, -0.540296, 0.31194, 0, 0, 0)
+light_energy = 0.808
+light_volumetric_fog_energy = 0.515
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("2_0squq")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 1, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_217ym")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_xek8l")
+
+[node name="Floor2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.7, 5, 6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
+shape = SubResource("BoxShape3D_217ym")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2"]
+mesh = SubResource("BoxMesh_xek8l")
+
+[node name="Floor3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.7, -1, 11, -4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3"]
+shape = SubResource("BoxShape3D_217ym")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3"]
+mesh = SubResource("BoxMesh_xek8l")
+
+[node name="Floor4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.7, -2, 23, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor4"]
+shape = SubResource("BoxShape3D_217ym")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor4"]
+mesh = SubResource("BoxMesh_xek8l")
+
+[node name="CharacterBody3D2" parent="." instance=ExtResource("3_3y6w3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D2"]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D2"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 5, 0)
+fov = 86.2
+near = 0.036
+script = ExtResource("4_hhe41")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.883766, -0.46793, 0, 0.46793, 0.883766, 1, 3.86306e-08, -2.04539e-08, -7.46386, 13.0851, -0.658702)
+light_energy = 8.04
+light_volumetric_fog_energy = 16.0
+spot_range = 21.446
+spot_angle = 6.97
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.883766, -0.46793, 0, 0.46793, 0.883766, 1, 3.86306e-08, -2.04539e-08, -5.08918, 13.0851, -3.24836)
+light_energy = 8.04
+light_volumetric_fog_energy = 16.0
+spot_range = 21.446
+spot_angle = 6.97
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.883766, -0.46793, 0, 0.46793, 0.883766, 1, 3.86306e-08, -2.04539e-08, -4.06646, 13.0851, 1.427)
+light_energy = 8.04
+light_volumetric_fog_energy = 16.0
+spot_range = 21.446
+spot_angle = 6.97
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0.883766, -0.46793, 0, 0.46793, 0.883766, 1, 3.86306e-08, -2.04539e-08, -9.01639, 13.0851, 1.12056)
+light_energy = 8.04
+light_volumetric_fog_energy = 16.0
+spot_range = 21.446
+spot_angle = 6.97
