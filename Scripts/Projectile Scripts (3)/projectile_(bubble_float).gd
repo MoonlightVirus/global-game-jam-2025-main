@@ -4,10 +4,12 @@ extends RigidBody3D
 # Called when the node enters the scene tree for the first time.
 
 var speed = 10.0  
-var upward_force = 0.1
-var lifetime = 5
+var upward_force = 0.2
+var lifetime = 15.0
 var initial_velocity: Vector3 = Vector3.ZERO
 func _ready() -> void:
+	
+	add_to_group("bubbles")
 	linear_velocity = initial_velocity + (transform.basis.z * -speed) + Vector3(0, upward_force, 0)
 	await get_tree().create_timer(lifetime).timeout
 	queue_free()

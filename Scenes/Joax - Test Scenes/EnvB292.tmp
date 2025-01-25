@@ -1,11 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://bepn4lxqgu2sm"]
+[gd_scene load_steps=11 format=3 uid="uid://bepn4lxqgu2sm"]
 
 [ext_resource type="Environment" uid="uid://dquai7pghtbvx" path="res://Shaders/new_environment.tres" id="2_0squq"]
 [ext_resource type="PackedScene" uid="uid://dsg0emsoncbh7" path="res://character_body_3d test.tscn" id="3_3y6w3"]
 [ext_resource type="Script" path="res://Scenes/Joax - Test Scenes/Wall Script (Float).gd" id="4_7bblw"]
 [ext_resource type="Script" path="res://Scenes/Joax - Test Scenes/Joax Scripts/Detection Box.gd" id="4_cp2pd"]
 [ext_resource type="Script" path="res://Scenes/main_camera.gd" id="4_hhe41"]
-[ext_resource type="PackedScene" uid="uid://ih57kiw7ifqa" path="res://Scenes/level 1.tscn" id="6_5kwlh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_217ym"]
 
@@ -15,8 +14,6 @@ lightmap_size_hint = Vector2i(14, 21)
 [sub_resource type="BoxShape3D" id="BoxShape3D_pcjrm"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_xxcm0"]
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_yrmky"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_68gju"]
 
@@ -42,7 +39,6 @@ mesh = SubResource("BoxMesh_xek8l")
 
 [node name="Floor2" type="StaticBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.7, 5, 6, 0)
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
 shape = SubResource("BoxShape3D_217ym")
@@ -69,12 +65,7 @@ shape = SubResource("BoxShape3D_217ym")
 mesh = SubResource("BoxMesh_xek8l")
 
 [node name="CharacterBody3D2" parent="." instance=ExtResource("3_3y6w3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 2)
-disable_mode = 2
-collision_layer = 129
-collision_mask = 129
-floor_stop_on_slope = false
-floor_block_on_wall = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 5, 0)
@@ -85,14 +76,12 @@ script = ExtResource("4_hhe41")
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="Wall" type="Node3D" parent="." node_paths=PackedStringArray("bubble_detection_walls")]
-transform = Transform3D(-7.03548e-08, 0, -1.60953, 0, 1.60953, 0, 1.60953, 0, -7.03548e-08, 0, 2.63994, 5.39813)
+transform = Transform3D(1.60953, 0, 0, 0, 1.60953, 0, 0, 0, 1.60953, 0, 0, 0)
 script = ExtResource("4_7bblw")
 bubble_detection_walls = NodePath("bubble_detection_box")
 
 [node name="bubble_detection_box" type="Area3D" parent="Wall"]
-transform = Transform3D(1.86137, 0, 0, 0, 6.34561, 0, 0, 0, 6.21758, 0, 0, 0)
-collision_layer = 2
-collision_mask = 2
+transform = Transform3D(1.89786, 0, 0, 0, 1.89786, 0, 0, 0, 1.89786, 0, 0, 0)
 priority = 1
 script = ExtResource("4_cp2pd")
 
@@ -104,21 +93,7 @@ transform = Transform3D(0.525, 0, 0, 0, 0.525, 0, 0, 0, 0.525, 0, 0, 0)
 layers = 128
 mesh = SubResource("PrismMesh_xxcm0")
 
-[node name="Actual Wall" type="Node3D" parent="Wall"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Wall"]
 transform = Transform3D(0.996374, 0, 0, 0, 0.996374, 0, 0, 0, 0.996374, 0, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Wall/Actual Wall"]
-transform = Transform3D(1, 0, 0, 0, 1.63563, 0, 0, 0, 4.15742, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/Actual Wall/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-shape = SubResource("CylinderShape3D_yrmky")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall/Actual Wall/StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transparency = 0.71
 mesh = SubResource("CylinderMesh_68gju")
-skeleton = NodePath("../../..")
-
-[node name="RigidBody3D" parent="." instance=ExtResource("6_5kwlh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
