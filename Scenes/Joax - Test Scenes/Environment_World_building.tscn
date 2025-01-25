@@ -121,4 +121,5 @@ mesh = SubResource("CylinderMesh_68gju")
 skeleton = NodePath("../../..")
 
 [node name="RigidBody3D" parent="." instance=ExtResource("6_5kwlh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -24)
+disable_mode = 1
