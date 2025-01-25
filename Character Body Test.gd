@@ -72,6 +72,9 @@ func shoot_bubble():
 	if bubble_scene:
 		# Create an instance of the bubble
 		var bubble = bubble_scene.instantiate()
+		
+		# Add the bubble to the scene
+		get_tree().get_current_scene().add_child(bubble)
 
 		# Set the bubble's starting position based on the character's position + offset
 		bubble.global_transform.origin = global_transform.origin + (transform.basis * spawn_offset)
@@ -91,9 +94,6 @@ func shoot_bubble():
 			bubble.linear_velocity = bubble_velocity
 			
 			
-
-		# Add the bubble to the scene
-		get_tree().get_current_scene().add_child(bubble)
 
 func start_shoot_delay():
 	var shoot_timer = Timer.new()
