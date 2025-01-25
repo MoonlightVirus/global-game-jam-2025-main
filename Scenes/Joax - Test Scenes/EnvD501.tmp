@@ -1,11 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://bepn4lxqgu2sm"]
+[gd_scene load_steps=13 format=3 uid="uid://bepn4lxqgu2sm"]
 
 [ext_resource type="Environment" uid="uid://dquai7pghtbvx" path="res://Shaders/new_environment.tres" id="2_0squq"]
 [ext_resource type="PackedScene" uid="uid://dsg0emsoncbh7" path="res://character_body_3d test.tscn" id="3_3y6w3"]
-[ext_resource type="Script" path="res://character_body_3d_test.gd" id="3_l50rk"]
 [ext_resource type="Script" path="res://Scenes/Joax - Test Scenes/Wall Script (Float).gd" id="4_7bblw"]
 [ext_resource type="Script" path="res://Scenes/Joax - Test Scenes/Joax Scripts/Detection Box.gd" id="4_cp2pd"]
-[ext_resource type="PackedScene" path="res://Scenes/level 1.tscn" id="6_5kwlh"]
+[ext_resource type="Script" path="res://Scenes/main_camera.gd" id="4_hhe41"]
+[ext_resource type="PackedScene" uid="uid://ih57kiw7ifqa" path="res://Scenes/level 1.tscn" id="6_5kwlh"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_217ym"]
 
@@ -19,30 +19,6 @@ lightmap_size_hint = Vector2i(14, 21)
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_yrmky"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_68gju"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_f0wsj"]
-bg_color = Color(0.650128, 0.650128, 0.650128, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-border_color = Color(0.270222, 0.270222, 0.270222, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 15
-corner_radius_bottom_left = 10
-expand_margin_left = 2.0
-expand_margin_top = 2.0
-expand_margin_right = 2.0
-expand_margin_bottom = 2.0
-shadow_color = Color(0.215902, 0.215902, 0.215902, 0.6)
-shadow_size = 1
-shadow_offset = Vector2(2, 2)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jvhhf"]
-bg_color = Color(0.14626, 0.569962, 0.692587, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 15
-corner_radius_bottom_left = 10
 
 [node name="EnvironmentWorldBuilding" type="Node3D"]
 
@@ -99,12 +75,12 @@ collision_layer = 129
 collision_mask = 129
 floor_stop_on_slope = false
 floor_block_on_wall = false
-script = ExtResource("3_l50rk")
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 5, 0)
 fov = 86.2
 near = 0.036
+script = ExtResource("4_hhe41")
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -135,35 +111,14 @@ transform = Transform3D(0.996374, 0, 0, 0, 0.996374, 0, 0, 0, 0.996374, 0, 0, 0)
 transform = Transform3D(1, 0, 0, 0, 1.63563, 0, 0, 0, 4.15742, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall/Actual Wall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("CylinderShape3D_yrmky")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Wall/Actual Wall/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 transparency = 0.71
 mesh = SubResource("CylinderMesh_68gju")
 skeleton = NodePath("../../..")
 
 [node name="RigidBody3D" parent="." instance=ExtResource("6_5kwlh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 3, -24)
-disable_mode = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-offset_left = 18.0
-offset_top = 27.0
-offset_right = 276.0
-offset_bottom = 54.0
-theme_override_styles/background = SubResource("StyleBoxFlat_f0wsj")
-theme_override_styles/fill = SubResource("StyleBoxFlat_jvhhf")
-value = 100.0
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
-one_shot = true
-
-[node name="oxygen_timer" type="Timer" parent="."]
-autostart = true
-
-[node name="bubble_timer" type="Timer" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
