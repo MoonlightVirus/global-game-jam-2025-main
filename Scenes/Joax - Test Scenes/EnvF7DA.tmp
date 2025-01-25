@@ -13,6 +13,7 @@ lightmap_size_hint = Vector2i(14, 21)
 [node name="EnvironmentWorldBuilding" type="Node3D"]
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_1mqqk")]
+spawn_offset = null
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.62388, 0.676816, -0.39076, 4.18842e-08, 0.5, 0.866025, 0.78152, -0.540296, 0.31194, 0, 0, 0)
@@ -61,6 +62,7 @@ mesh = SubResource("BoxMesh_xek8l")
 
 [node name="CharacterBody3D2" parent="." instance=ExtResource("3_3y6w3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+spawn_offset = null
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D2"]
 transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 5, 0)

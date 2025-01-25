@@ -66,6 +66,7 @@ mesh = SubResource("BoxMesh_2dpm2")
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("1_q8av5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+spawn_offset = Vector3(0, 1, -2)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D"]
 physics_interpolation_mode = 1
