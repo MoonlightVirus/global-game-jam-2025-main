@@ -1,0 +1,153 @@
+[gd_scene load_steps=10 format=3 uid="uid://c70gyrwujkwl"]
+
+[ext_resource type="Environment" uid="uid://dquai7pghtbvx" path="res://Shaders/new_environment.tres" id="1_pi7pb"]
+[ext_resource type="PackedScene" uid="uid://dsg0emsoncbh7" path="res://character_body_3d test.tscn" id="2_x3koi"]
+[ext_resource type="Script" path="res://Scenes/main_camera.gd" id="3_sgabq"]
+[ext_resource type="PackedScene" uid="uid://bf184b1tpt4ue" path="res://Scenes/Louis - Test Scenes/OxygenPack.tscn" id="4_c08p1"]
+[ext_resource type="Texture2D" uid="uid://cg6w41njohrl" path="res://assets/3d.png" id="5_p2668"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_84ci4"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_2dpm2"]
+lightmap_size_hint = Vector2i(14, 21)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e51e5"]
+bg_color = Color(0.650128, 0.650128, 0.650128, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.270222, 0.270222, 0.270222, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 15
+corner_radius_bottom_left = 10
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0.215902, 0.215902, 0.215902, 0.6)
+shadow_size = 1
+shadow_offset = Vector2(2, 2)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjkou"]
+bg_color = Color(0.14626, 0.569962, 0.692587, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 15
+corner_radius_bottom_left = 10
+
+[node name="Main2" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.62388, 0.676817, -0.39076, 4.18842e-08, 0.5, 0.866025, 0.78152, -0.540295, 0.31194, 0, 0, 0)
+light_energy = 0.808
+light_volumetric_fog_energy = 0.515
+shadow_enabled = true
+
+[node name="SpotLight3D" type="SpotLight3D" parent="DirectionalLight3D"]
+transform = Transform3D(1, 0, -1.49012e-08, -2.98023e-08, 1, 1.49012e-08, -2.98023e-08, 1.49012e-08, 1, -4.55287, 2.06665, 14.9861)
+light_color = Color(1, 1, 0.756863, 1)
+light_energy = 10.965
+light_indirect_energy = 1.97
+light_volumetric_fog_energy = 8.919
+spot_range = 20.8447
+spot_attenuation = 2.41
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_pi7pb")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="Floor2" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.7, 5, 6, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor2"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor2"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="Floor3" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.7, -1, 11, -4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor3"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor3"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="Floor4" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 0.7, -2, 23, 4)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor4"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor4"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="CharacterBody3D" parent="." groups=["player"] instance=ExtResource("2_x3koi")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CharacterBody3D"]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+spring_length = 3.0
+
+[node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1.19249e-08, 1, 0, -1, 1.19249e-08, 0, 5, 0)
+near = 0.001
+script = ExtResource("3_sgabq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0395355, 0.0179062, 0.0108337)
+light_color = Color(0.610999, 0.803049, 0.827816, 1)
+light_energy = 4.0
+light_volumetric_fog_energy = 2.0
+omni_range = 5.411
+omni_attenuation = 1.2
+
+[node name="OxygenTank" parent="." instance=ExtResource("4_c08p1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 9)
+
+[node name="OxygenTank2" parent="." instance=ExtResource("4_c08p1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 9, 2)
+
+[node name="OxygenTank3" parent="." instance=ExtResource("4_c08p1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 7, -13)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 18.0
+offset_top = 27.0
+offset_right = 276.0
+offset_bottom = 54.0
+theme_override_styles/background = SubResource("StyleBoxFlat_e51e5")
+theme_override_styles/fill = SubResource("StyleBoxFlat_xjkou")
+value = 100.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
+[node name="oxygen_timer" type="Timer" parent="."]
+autostart = true
+
+[node name="bubble_timer" type="Timer" parent="."]
+
+[node name="OxygenTank4" parent="." instance=ExtResource("4_c08p1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -6)
+
+[node name="Test" type="Sprite3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 10, -17.3205, 0, 17.3205, 10, 0, 9, 13)
+texture = ExtResource("5_p2668")
+
+[connection signal="ready" from="CharacterBody3D" to="CharacterBody3D" method="_on_ready"]
+[connection signal="timeout" from="Timer" to="OxygenTank" method="_on_timer_timeout"]
