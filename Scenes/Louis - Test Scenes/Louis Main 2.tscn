@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cq5xahqgixkhb"]
+[gd_scene load_steps=14 format=3 uid="uid://cq5xahqgixkhb"]
 
 [ext_resource type="Environment" uid="uid://dquai7pghtbvx" path="res://Shaders/new_environment.tres" id="1_2pavf"]
 [ext_resource type="PackedScene" uid="uid://dsg0emsoncbh7" path="res://character_body_3d test.tscn" id="2_0i5oj"]
@@ -6,7 +6,6 @@
 [ext_resource type="Shader" path="res://Shaders/Floor.gdshader" id="2_rvoks"]
 [ext_resource type="Script" path="res://Scenes/main_camera.gd" id="3_c2200"]
 [ext_resource type="PackedScene" uid="uid://bf184b1tpt4ue" path="res://Scenes/Louis - Test Scenes/OxygenPack.tscn" id="4_2qfcd"]
-[ext_resource type="Shader" path="res://Shaders/Camera.gdshader" id="6_iy1nw"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_84ci4"]
 
@@ -26,21 +25,6 @@ uv1_scale = Vector3(3, 3, 3)
 dof_blur_far_enabled = true
 dof_blur_near_enabled = true
 dof_blur_amount = 0.05
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ly855"]
-render_priority = 0
-shader = ExtResource("6_iy1nw")
-shader_parameter/luminance = Color(0.3086, 0.6094, 0.082, 1)
-shader_parameter/brightness = 0.92
-shader_parameter/contrast = 1.91
-shader_parameter/scale = 4.48
-shader_parameter/rotation = 0.49
-shader_parameter/resolution_downsampling = 5.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_8o2if"]
-material = SubResource("ShaderMaterial_ly855")
-flip_faces = true
-size = Vector2(2, 2)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e51e5"]
 bg_color = Color(0.650128, 0.650128, 0.650128, 1)
@@ -104,40 +88,69 @@ shape = SubResource("BoxShape3D_84ci4")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Floor"]
 mesh = SubResource("BoxMesh_2dpm2")
 
-[node name="Wall" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(300, 0, 0, 0, 0.513347, 85.8181, 0, -0.858181, 51.3347, 86.4208, 38.702, 54.3072)
+[node name="WAll" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, 0.523257, -85.2175, 0, 0.852175, 52.3257, 86.2257, 28.8811, -57.3034)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Wall"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll"]
 shape = SubResource("BoxShape3D_84ci4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Wall"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll"]
 mesh = SubResource("BoxMesh_2dpm2")
 
-[node name="Wall2" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(300, 0, 0, 0, -0.536563, 84.386, 0, -0.84386, -53.6563, 86.5415, 41.0947, -54.7685)
+[node name="WAll6" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.39712, 0.994216, 10.6393, 299.965, 0.0150184, -0.259637, -1.25377, 0.106342, -99.4321, -62.2813, 71.5753, 51.9875)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Wall2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll6"]
 shape = SubResource("BoxShape3D_84ci4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Wall2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll6"]
+transform = Transform3D(1, -9.09495e-12, -2.32831e-10, 0, 1, 9.53674e-07, 9.31323e-10, 0, 1, 1.21593e-05, -0.2472, -0.000264585)
 mesh = SubResource("BoxMesh_2dpm2")
 
-[node name="Wall3" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(15.403, -0.883321, 46.5948, -241.22, -0.313281, -50.5302, 177.695, -0.34871, -72.6335, -67.5816, 76.3038, -54.2661)
+[node name="WAll7" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(-4.39712, 0.994216, 10.6393, 299.965, 0.0150184, -0.259637, -1.25377, 0.106342, -99.4321, -62.2813, 71.5753, -42.0434)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Wall3"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll7"]
 shape = SubResource("BoxShape3D_84ci4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Wall3"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll7"]
+transform = Transform3D(1, -5.68434e-12, 0, -1.49012e-08, 1, 0, 0, 0, 1, -0.000539064, 10.9698, 0.011739)
 mesh = SubResource("BoxMesh_2dpm2")
 
-[node name="Wall4" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
-transform = Transform3D(110.372, -0.848476, -38.044, -272.47, -0.41563, 4.86515, -59.8206, 0.327629, -92.3525, -86.5873, 110.432, 33.309)
+[node name="WAll5" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, -0.1699, -98.5461, 0, 0.985461, -16.99, 86.2257, 111.669, -74.2941)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Wall4"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll5"]
 shape = SubResource("BoxShape3D_84ci4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Wall4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll5"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll2" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, -0.253268, -96.7396, 0, 0.967396, -25.3268, 85.8313, 33.4642, 48.6366)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll2"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll2"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll3" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, -0.253268, -96.7396, 0, 0.967396, -25.3268, 85.8313, 33.4642, 48.6366)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll3"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll3"]
+mesh = SubResource("BoxMesh_2dpm2")
+
+[node name="WAll4" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
+transform = Transform3D(300, 0, 0, 0, 0.106576, -99.4305, 0, 0.994304, 10.6577, 85.8313, 118.173, 54.2726)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/WAll4"]
+shape = SubResource("BoxShape3D_84ci4")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/WAll4"]
 mesh = SubResource("BoxMesh_2dpm2")
 
 [node name="Floor2" type="StaticBody3D" parent="SubViewportContainer/SubViewport"]
@@ -188,11 +201,6 @@ script = ExtResource("3_c2200")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, -2, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/CharacterBody3D/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -1.19249e-07, -10)
-mesh = SubResource("QuadMesh_8o2if")
-skeleton = NodePath("../../..")
-
 [node name="OmniLight3D" type="OmniLight3D" parent="SubViewportContainer/SubViewport/CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0395355, 0.0179062, 0.0108337)
 light_color = Color(0.610999, 0.803049, 0.827816, 1)
@@ -203,6 +211,48 @@ omni_attenuation = 1.2
 
 [node name="OxygenTank" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 9)
+
+[node name="OxygenTank5" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 47.2334, 50.103, 12.2317)
+
+[node name="OxygenTank6" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.4115, 46.5269, -9.21994)
+
+[node name="OxygenTank7" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 104.647, 39.3744, 1.28983)
+
+[node name="OxygenTank8" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2577, 1.22791, -13.5535)
+
+[node name="OxygenTank9" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.9276, 37.3877, -22.9182)
+
+[node name="OxygenTank10" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2487, 23.8772, -5.16559)
+
+[node name="OxygenTank11" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -36.3248, 41.1205, 42.5352)
+
+[node name="OxygenTank12" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2185, 41.1206, 40.6441)
+
+[node name="OxygenTank13" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.7019, 39.3745, 34.6041)
+
+[node name="OxygenTank14" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.132, 25.4667, 20.8266)
+
+[node name="OxygenTank15" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 147.025, 25.4667, -21.3888)
+
+[node name="OxygenTank16" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.9909, 39.3743, -18.1)
+
+[node name="OxygenTank17" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71.8731, 18.0293, 12.1001)
+
+[node name="OxygenTank18" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8764, 42.0278, 13.9548)
 
 [node name="OxygenTank2" parent="SubViewportContainer/SubViewport" instance=ExtResource("4_2qfcd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17, 9, 2)

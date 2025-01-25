@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3yvghoaoi0tw"]
+[gd_scene load_steps=7 format=3 uid="uid://d3yvghoaoi0tw"]
 
 [ext_resource type="Script" path="res://menu.gd" id="1_j5b26"]
 [ext_resource type="VideoStream" path="res://assets/bg.ogv" id="2_x15eg"]
+[ext_resource type="Texture2D" uid="uid://cc4uyrtk0e0h7" path="res://assets/text-1737809242473.png" id="3_te37e"]
 
 [sub_resource type="SystemFont" id="SystemFont_nh5qr"]
 
@@ -114,6 +115,11 @@ theme_override_font_sizes/font_size = 25
 theme_override_styles/hover = SubResource("StyleBoxFlat_35rrm")
 theme_override_styles/normal = SubResource("StyleBoxFlat_swhug")
 text = "LEVELS"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(971, 275)
+scale = Vector2(3.25204, 3.71983)
+texture = ExtResource("3_te37e")
 
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Levels" to="." method="_on_levels_pressed"]

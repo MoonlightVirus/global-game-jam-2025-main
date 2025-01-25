@@ -3,8 +3,8 @@ extends RigidBody3D
 
 # Called when the node enters the scene tree for the first time.
 
-var speed = 10.0  
-var upward_force = 0.45
+var speed = 12.0  
+var upward_force = 0.2
 var lifetime = 5
 var initial_velocity: Vector3 = Vector3.ZERO
 var target_velocity: Vector3 = Vector3.ZERO
